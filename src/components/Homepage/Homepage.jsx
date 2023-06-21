@@ -1,6 +1,7 @@
 import React from 'react'
 import '../Homepage/Homepage.css'
 import headphones from '../../assets/HeroSection/headphones.png'
+import Card from '../Card/Card'
 function Homepage() {
   return (
     <div className='homepage-container'>
@@ -13,7 +14,7 @@ function Homepage() {
             <img src={headphones } alt='vibrating-headphones'/>
 
         </div>
-
+    <Card/>
     </div>
   )
 }

@@ -8,6 +8,7 @@ function Dashboard() {
     <div>
         <NavBar/>
         <Homepage/>
+        
     </div>
   )
 }
