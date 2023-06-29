@@ -1,11 +1,14 @@
 .homepage-container{
     margin: 0px 30px 30px 30px;
+    width: fit-content;
+    height: fit-content;
 }
 .hero-section-container{
     margin-top: 29px;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 30px;
 }
 
 .hero-text p {
@@ -23,4 +26,26 @@ text-align: center;
 .hero-section-container img{
     width: 212px;
     
+}
+
+.card{
+    display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+    
+    height: 3px;
+
+}
+.top-albums{
+    
+    display: inline-block;
+    
+    height: 100%;
+    
+}
+
+.albums-header{
+    display: flex;
+    justify-content: space-between;
+    color: #FFFFFF;
 }

@@ -3,11 +3,11 @@ import React from 'react'
 import NavBar from '../Navbar/NavBar'
 import Homepage from '../Homepage/Homepage'
 
-function Dashboard() {
+function Dashboard({data,newAlbumsData}) {
   return (
     <div>
         <NavBar/>
-        <Homepage/>
+        <Homepage data={data} newAlbumsData={newAlbumsData}/>
         
     </div>
   )

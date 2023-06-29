@@ -4,13 +4,19 @@ height: 205px;
 /* border: 1px solid white; */
 border-radius: 12px;
 background-color: white;
-
+/* float: none; */
 
 }
 
 .card-content{
-    overflow: hidden;
+    /* overflow: hidden; */
     
+}
+.card-content img{
+    width: 159px;
+    height: 170px;
+    object-fit: cover;
+
 }
 .card-follow-count{
     background-color: black;
@@ -36,4 +42,5 @@ line-height: 15px;
 font-size: 14px;
 line-height: 21px;
 color: #FFFFFF;
+text-overflow: ellipsis;
 }
