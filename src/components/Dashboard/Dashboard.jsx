@@ -1,16 +1,22 @@
+import React from "react";
+import NavBar from "../Navbar/NavBar";
+import Homepage from "../Homepage/Homepage";
+import Loader from "../Loader/Loader";
 
-import React from 'react'
-import NavBar from '../Navbar/NavBar'
-import Homepage from '../Homepage/Homepage'
-
-function Dashboard({data,newAlbumsData}) {
+function Dashboard({ data, newAlbumsData, loading }) {
   return (
     <div>
-        <NavBar/>
-        <Homepage data={data} newAlbumsData={newAlbumsData}/>
-        
+      <NavBar />
+      {loading ? (
+        <div className="flex items-center justify-center h-[80vh]">
+
+        <Loader />
+        </div>
+      ) : (
+        <Homepage data={data} newAlbumsData={newAlbumsData} />
+      )}
     </div>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;

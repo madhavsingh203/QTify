@@ -18,9 +18,9 @@ function Homepage({ data, newAlbumsData }) {
 
       <div className="flex flex-col gap-10">
 
-      <Section data={data} sectionName={"Top Albums"} />
+      <Section data={data} sectionName={"Top Albums"} carouselKey="carousel1"/>
 
-      <Section data={newAlbumsData} sectionName={"New Albums"} />
+      <Section data={newAlbumsData} sectionName={"New Albums"} carouselKey="carousel2"/>
       </div>
 
     </div>
