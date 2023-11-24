@@ -6,27 +6,27 @@ import { fetchTopAlbums, fetchNewAlbums } from "./api/api";
 import Card from "./components/Card/Card";
 
 export default function App() {
-  const [data, setData] = useState([])
-  const [newAlbumsData, setNewAlbumsData] = useState([])
-  const getData = async(fetchDataFor,stateFunction)=>{
-try{
-  const response= await fetchDataFor();
-  console.log(response)
-  stateFunction(response)
+  const [data, setData] = useState([]);
+  const [newAlbumsData, setNewAlbumsData] = useState([]);
+
+  //Function for fetching the data from api
+  const getData = async (fetchDataFor, stateFunction) => {
+    try {
+      const response = await fetchDataFor();
+      console.log(response);
+      stateFunction(response);
+    } catch (err) {
+      console.error("error found", err);
+    }
+  };
   
-}catch(err){
-  alert("error found",err)
-}
-  }
-  useEffect(()=>{
-
-getData(fetchTopAlbums,setData)
-getData(fetchNewAlbums,setNewAlbumsData)
-
-  },[])
+  useEffect(() => {
+    getData(fetchTopAlbums, setData);
+    getData(fetchNewAlbums, setNewAlbumsData);
+  }, []);
   return (
     <div className="App">
-      <Dashboard data={data} newAlbumsData={newAlbumsData}/>
+      <Dashboard data={data} newAlbumsData={newAlbumsData} />
     </div>
   );
 }

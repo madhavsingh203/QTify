@@ -6,7 +6,7 @@ export const fetchTopAlbums = async()=>{
 const response = await axios.get(`${backend_endpoint}/albums/top`)
 return response.data
     }catch(error){
-        alert('error occured', error)
+        console.error('error occured', error)
     }
 }
 
@@ -17,6 +17,6 @@ export const fetchNewAlbums = async()=>{
         const response = await axios.get(`${backend_endpoint}/albums/new`)
         return response.data
             }catch(error){
-                alert('error occured', error)
+                console.error('error occured', error)
             }
 }
