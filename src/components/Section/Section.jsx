@@ -18,21 +18,22 @@ const Section = ({ data, sectionName, carouselKey, hideShowAll, tabs }) => {
   };
 
   useEffect(() => {
-    if (activeTab !== "all") {
+    if (tabs && activeTab !== "all") {
       const extractedData = data?.filter(
         (song) => song?.genre?.key === activeTab
       );
       setFilteredData(extractedData);
+      console.log("Came here")
     }else{
       setFilteredData(data)
     }
-  }, [activeTab]);
+  }, [activeTab,data]);
 
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
   };
   return (
-    <div className=" text-white ">
+    <div className=" text-white">
       <div className="flex justify-between">
         <h4>{sectionName}</h4>
         {!hideShowAll && (
@@ -58,13 +59,14 @@ const Section = ({ data, sectionName, carouselKey, hideShowAll, tabs }) => {
         </div>
       )}
 
-      <div>
+      <div className="w-full">
         {showAll ? (
           <Carousel
             data={tabs ? filteredData : data}
             key={sectionName}
             carouselKey={carouselKey}
           />
+          // <></>
         ) : (
           <div className="flex flex-row flex-wrap gap-5">
             {data?.map((item) => (

@@ -16,6 +16,7 @@ function Homepage({ data, newAlbumsData }) {
     const response = await axios.get(`${backend_endpoint}/songs`);
     
     setAllSongs(response.data);
+    
   };
 
   useEffect(() => {
@@ -23,8 +24,8 @@ function Homepage({ data, newAlbumsData }) {
   }, []);
 
   return (
-    <div className="homepage-container">
-      <div className="hero-section-container ">
+    <div className="px-4 w-full">
+      <div className="hero-section-container flex-wrap">
         <div className="hero-text">
           <p>100 Thousand Songs, ad-free</p>
           <p>Over thousands podcast episodes</p>
@@ -32,7 +33,7 @@ function Homepage({ data, newAlbumsData }) {
         <img src={headphones} alt="vibrating-headphones" />
       </div>
 
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-10 w-full">
         <Section
           data={data}
           sectionName={"Top Albums"}

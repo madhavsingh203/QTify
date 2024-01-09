@@ -5,7 +5,7 @@ import Loader from "../Loader/Loader";
 
 function Dashboard({ data, newAlbumsData, loading }) {
   return (
-    <div>
+    <div className="w-full">
       <NavBar />
       {loading ? (
         <div className="flex items-center justify-center h-[80vh]">
@@ -14,6 +14,7 @@ function Dashboard({ data, newAlbumsData, loading }) {
         </div>
       ) : (
         <Homepage data={data} newAlbumsData={newAlbumsData} />
+        // <></>
       )}
     </div>
   );

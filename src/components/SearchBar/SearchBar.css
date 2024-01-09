@@ -9,7 +9,7 @@
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
   border: 1px solid var(--color-black);
-  width: 502px;
+ max-width: 502px;
 }
 
 .search-btn {

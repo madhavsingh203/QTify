@@ -29,7 +29,7 @@ export default function App() {
     getData(fetchNewAlbums, setNewAlbumsData);
   }, []);
   return (
-    <div className="App">
+    <div className="App w-full">
       <Dashboard data={data} newAlbumsData={newAlbumsData} loading={loading}/>
     </div>
   );
