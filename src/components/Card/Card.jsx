@@ -8,7 +8,7 @@ function Card({ data, type }) {
       case "album": {
         const { image, follows, title, slug, songs } = data;
         return (
-          <Tooltip title={`${songs.length} songs`} placement="top" arrow>
+          <Tooltip title={`${songs?.length} songs`} placement="top" arrow>
             <div className="card-container my-2">
               <div className="card-content">
                 <img

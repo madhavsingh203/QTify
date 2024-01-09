@@ -1,30 +1,70 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../Card/Card";
 // import function to register Swiper custom elements
 import { register } from "swiper/element/bundle";
 import Carousel from "../Carousel/Carousel";
+import { Tab, Tabs } from "@mui/material";
 // register Swiper custom elements
 register();
 
-const Section = ({ data, sectionName, carouselKey }) => {
+const Section = ({ data, sectionName, carouselKey, hideShowAll, tabs }) => {
   const [swiperRef, setSwiperRef] = useState(null);
   const [showAll, setShowAll] = useState(true);
+  const [activeTab, setActiveTab] = useState("all");
+  const [filteredData, setFilteredData] = useState([]);
 
   const handleShowAll = () => {
     setShowAll(!showAll);
+  };
+
+  useEffect(() => {
+    if (activeTab !== "all") {
+      const extractedData = data?.filter(
+        (song) => song?.genre?.key === activeTab
+      );
+      setFilteredData(extractedData);
+    }else{
+      setFilteredData(data)
+    }
+  }, [activeTab]);
+
+  const handleTabChange = (event, newValue) => {
+    setActiveTab(newValue);
   };
   return (
     <div className=" text-white ">
       <div className="flex justify-between">
         <h4>{sectionName}</h4>
-        <h6 className="text-primary cursor-pointer" onClick={handleShowAll}>
-          {showAll ? "Show All" : "Collapse"}
-        </h6>
+        {!hideShowAll && (
+          <h6 className="text-primary cursor-pointer" onClick={handleShowAll}>
+            {showAll ? "Show All" : "Collapse"}
+          </h6>
+        )}
       </div>
+      {tabs && (
+        <div className="text-white">
+          <Tabs
+            value={activeTab}
+            onChange={handleTabChange}
+            indicatorColor="primary"
+            textColor="white"
+          >
+            <Tab label="All" value={"all"} />
+            <Tab label="Rock" value={"rock"} />
+            <Tab label="Pop" value={"pop"} />
+            <Tab label="Jazz" value={"jazz"} />
+            <Tab label="Blues" value={"blues"} />
+          </Tabs>
+        </div>
+      )}
 
       <div>
         {showAll ? (
-          <Carousel data={data} key={sectionName} carouselKey={carouselKey}/>
+          <Carousel
+            data={tabs ? filteredData : data}
+            key={sectionName}
+            carouselKey={carouselKey}
+          />
         ) : (
           <div className="flex flex-row flex-wrap gap-5">
             {data?.map((item) => (

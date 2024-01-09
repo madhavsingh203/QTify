@@ -7,8 +7,11 @@ import "./NavBar.css";
 const NavBar = () => {
   return (
     <nav className="navbar">
+      <div className="flex h-10 gap-5 justify-between w-full">
+
       <Logo />
       <SearchBar />
+      </div>
       <Button text="Give FeedBack" />
     </nav>
   );

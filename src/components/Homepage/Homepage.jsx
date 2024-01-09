@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../Homepage/Homepage.css";
 import headphones from "../../assets/HeroSection/headphones.png";
 
 import Card from "../Card/Card";
 import Section from "../Section/Section";
+import { backend_endpoint } from "../../api/api";
+import axios from "axios";
+import Faq from "../FAQ/Faq";
 function Homepage({ data, newAlbumsData }) {
-  console.log("data::", data);
+
+
+  const [allSongs, setAllSongs] = useState([]);
+
+  const fetchAllSongs = async () => {
+    const response = await axios.get(`${backend_endpoint}/songs`);
+    
+    setAllSongs(response.data);
+  };
+
+  useEffect(() => {
+    fetchAllSongs();
+  }, []);
+
   return (
     <div className="homepage-container">
       <div className="hero-section-container ">
@@ -14,15 +30,29 @@ function Homepage({ data, newAlbumsData }) {
           <p>Over thousands podcast episodes</p>
         </div>
         <img src={headphones} alt="vibrating-headphones" />
-      </div >
-
-      <div className="flex flex-col gap-10">
-
-      <Section data={data} sectionName={"Top Albums"} carouselKey="carousel1"/>
-
-      <Section data={newAlbumsData} sectionName={"New Albums"} carouselKey="carousel2"/>
       </div>
 
+      <div className="flex flex-col gap-10">
+        <Section
+          data={data}
+          sectionName={"Top Albums"}
+          carouselKey="carousel1"
+        />
+
+        <Section
+          data={newAlbumsData}
+          sectionName={"New Albums"}
+          carouselKey="carousel2"
+        />
+        <Section
+          data={allSongs}
+          sectionName={"Songs"}
+          carouselKey={"Songs"}
+          hideShowAll
+          tabs
+        />
+        <Faq/>
+      </div>
     </div>
   );
 }
