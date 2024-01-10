@@ -2,14 +2,19 @@ import React from "react";
 import Tooltip from "@mui/material/Tooltip";
 import "../Card/Card.css";
 import albumArt from "../../assets/Home/albumArt.png";
+import { useNavigate, useNavigation } from "react-router-dom";
 function Card({ data, type }) {
   const getCardData = (type) => {
+    const navigate = useNavigate()
+    const handleCardClick = ()=>{
+      navigate(`/${data?.slug}`)
+    }
     switch (type) {
       case "album": {
         const { image, follows, title, slug, songs } = data;
         return (
           <Tooltip title={`${songs?.length} songs`} placement="top" arrow>
-            <div className="card-container my-2">
+            <div onClick={handleCardClick} className="card-container my-2 cursor-pointer">
               <div className="card-content">
                 <img
                   style={{

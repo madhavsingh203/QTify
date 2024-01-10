@@ -45,7 +45,6 @@ const Carousel = ({ data, carouselKey }) => {
           nextEl: `.arrow-right-${carouselKey}`,
           prevEl: `.arrow-left-${carouselKey}`,
         }}
-        virtual
       >
         {data?.map((item, index) => (
           <SwiperSlide key={item.id} virtualIndex={index}>

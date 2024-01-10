@@ -6,7 +6,7 @@ import Loader from "../Loader/Loader";
 function Dashboard({ data, newAlbumsData, loading }) {
   return (
     <div className="w-full">
-      <NavBar />
+     
       {loading ? (
         <div className="flex items-center justify-center h-[80vh]">
 

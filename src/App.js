@@ -1,36 +1,53 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Import BrowserRouter
 import Dashboard from "./components/Dashboard/Dashboard";
 import NavBar from "./components/Navbar/NavBar";
 import "./styles.css";
 import { fetchTopAlbums, fetchNewAlbums } from "./api/api";
 import Card from "./components/Card/Card";
+import Playlist from "./components/PlaylistPage.jsx/Playlist";
 
 export default function App() {
   const [data, setData] = useState([]);
   const [newAlbumsData, setNewAlbumsData] = useState([]);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
-  //Function for fetching the data from api
+  // Function for fetching the data from api
   const getData = async (fetchDataFor, stateFunction) => {
     try {
-      setLoading(true)
+      setLoading(true);
       const response = await fetchDataFor();
-      // console.log(response);
       stateFunction(response);
-      setLoading(false)
+      setLoading(false);
     } catch (err) {
-      setLoading(false)
+      setLoading(false);
       console.error("error found", err);
     }
   };
-  
+
   useEffect(() => {
     getData(fetchTopAlbums, setData);
     getData(fetchNewAlbums, setNewAlbumsData);
   }, []);
+
   return (
     <div className="App w-full">
-      <Dashboard data={data} newAlbumsData={newAlbumsData} loading={loading}/>
+      <Router>
+        <NavBar/>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Dashboard
+                data={data}
+                newAlbumsData={newAlbumsData}
+                loading={loading}
+              />
+            }
+          />
+          <Route path="/:slug" element={<Playlist />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
