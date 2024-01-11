@@ -26,7 +26,7 @@ const Playlist = () => {
 
   useEffect(() => {
     fetchPlaylistData();
-  }, []);
+  }, [slug]);
 
   return (
     <>
