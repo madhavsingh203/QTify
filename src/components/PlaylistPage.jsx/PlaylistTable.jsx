@@ -15,9 +15,7 @@ const PlaylistTable = ({ tableData }) => {
       
       
 //   console.log(tableData);
-useEffect(()=>{
-console.log("loaded")
-},[tableData])
+
   return (
     <div className="w-full text-white mt-5">
       <table className="w-full">

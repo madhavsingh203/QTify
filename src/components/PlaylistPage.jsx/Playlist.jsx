@@ -15,7 +15,7 @@ const Playlist = () => {
     try {
       setLoading(true);
       const response = await axios.get(`${backend_endpoint}/album/${slug}`);
-      console.log(response?.data);
+      // console.log(response?.data);
       setPlaylistData(response?.data);
       setLoading(false);
     } catch (error) {
