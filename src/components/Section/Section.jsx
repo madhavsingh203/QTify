@@ -68,7 +68,7 @@ const Section = ({ data, sectionName, carouselKey, hideShowAll, tabs }) => {
           />
           // <></>
         ) : (
-          <div className="flex flex-row flex-wrap gap-5">
+          <div className="flex flex-row flex-wrap gap-5 ">
             {data?.map((item) => (
               <Card data={item} type="album" key={item.id} />
             ))}

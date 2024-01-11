@@ -30,8 +30,11 @@ const PlaylistTable = ({ tableData }) => {
             <React.Fragment key={row?.id}>
               <tr className="h-20">
                 <td className="flex gap-2 text-xs md:text-md items-center">
-                    <img src={row?.image} className="w-20 h-24 rounded"/>
-                    {row?.title}</td>
+                    <img src={row?.image} className="min-w-20 h-24 rounded"/>
+                    <p className=" break-words pr-1">
+                        {row?.title}
+                        </p>
+                    </td>
                 <td>
                   {row?.artists?.map((artist, index) => (
                     <p className="text-xs md:text-md" key={index}>{artist}</p>

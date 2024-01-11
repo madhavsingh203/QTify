@@ -6,6 +6,9 @@ import "./styles.css";
 import { fetchTopAlbums, fetchNewAlbums } from "./api/api";
 import Card from "./components/Card/Card";
 import Playlist from "./components/PlaylistPage.jsx/Playlist";
+import { SongsProvider } from "./context/SongsContext";
+import { SnackbarProvider } from "notistack";
+
 
 export default function App() {
   const [data, setData] = useState([]);
@@ -32,22 +35,31 @@ export default function App() {
 
   return (
     <div className="App w-full">
-      <Router>
-        <NavBar/>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Dashboard
-                data={data}
-                newAlbumsData={newAlbumsData}
-                loading={loading}
-              />
-            }
-          />
-          <Route path="/:slug" element={<Playlist />} />
-        </Routes>
-      </Router>
+      <SnackbarProvider autoHideDuration={3000} anchorOrigin={{
+        horizontal: "center",
+        vertical: "bottom"
+      }}
+    
+      >
+      <SongsProvider>
+        <Router>
+          <NavBar topAlbums={data} newAlbums={newAlbumsData} />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Dashboard
+                  data={data}
+                  newAlbumsData={newAlbumsData}
+                  loading={loading}
+                />
+              }
+            />
+            <Route path="/:slug" element={<Playlist />} />
+          </Routes>
+        </Router>
+      </SongsProvider>
+      </SnackbarProvider>
     </div>
   );
 }

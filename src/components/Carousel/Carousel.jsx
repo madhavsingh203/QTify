@@ -25,12 +25,15 @@ const Carousel = ({ data, carouselKey }) => {
     680: {
       slidesPerView: 3,
     },
-    768: {
-      slidesPerView: 4.75,
+    767: {
+      slidesPerView: 4.5,
     },
     1025: {
-      slidesPerView: 7,
+      slidesPerView: 6,
     },
+   1200: {
+    slidesPerView: 7,
+    }
   };
 
   return (

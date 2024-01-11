@@ -7,16 +7,19 @@ import Section from "../Section/Section";
 import { backend_endpoint } from "../../api/api";
 import axios from "axios";
 import Faq from "../FAQ/Faq";
+import { useSongs } from "../../context/SongsContext";
 function Homepage({ data, newAlbumsData }) {
-
-
-  const [allSongs, setAllSongs] = useState([]);
+  const { allSongs, updateSongs } = useSongs();
 
   const fetchAllSongs = async () => {
-    const response = await axios.get(`${backend_endpoint}/songs`);
-    
-    setAllSongs(response.data);
-    
+    try{
+
+      const response = await axios.get(`${backend_endpoint}/songs`);
+  
+      updateSongs(response.data);
+    }catch(error){
+      console.error("error:",error)
+    }
   };
 
   useEffect(() => {
@@ -52,7 +55,7 @@ function Homepage({ data, newAlbumsData }) {
           hideShowAll
           tabs
         />
-        <Faq/>
+        <Faq />
       </div>
     </div>
   );
